@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 # ========== MARKET DATA ==========
-S0 = 0.87           # Spot price
+S0 = 0.9001           # Spot price
 K = 0.95            # Strike
-today = datetime(2025, 2, 6)
+today = datetime(2025, 5, 6)
 expiry = datetime(2025, 12, 17)
-T = (expiry - today).days / 365.25  # Time to expiration in years
-r = 0.04354         # Risk-free rate
+T = (expiry - today).days / 365  # Time to expiration in years
+r = 0.04351         # Risk-free rate
 q = 0.00            # Dividend yield
-market_call = 0.1304 # Market call price
-market_put = 0.1882  # Market put price
+market_call = 0.1310943019 # Market call price
+market_put = 0.1592661679  # Market put price
 
 # ========== HESTON MODEL ==========
-def heston_simulate(S0, v0, kappa, theta, sigma, rho, T, n_simulations=100000, n_steps=50):
+def heston_simulate(S0, v0, kappa, theta, sigma, rho, T, n_simulations=200000, n_steps=75):
     """Simulate Heston model paths with variance reduction."""
     dt = T / n_steps
     S = np.zeros((n_simulations, n_steps + 1))
